@@ -1,3 +1,4 @@
+## 파이썬을 이용한 순열 계산 
 from itertools import permutations
 
 arr = [ 'a','b','c']
@@ -18,3 +19,8 @@ print(result)
 # 추가 설명 – 순열과 조합의 차이
 # 순열 (Permutation): 순서가 중요 → ('a', 'b') ≠ ('b', 'a')
 # 조합 (Combination): 순서가 중요하지 않음 → ('a', 'b') = ('b', 'a')
+
+
+
+
+
