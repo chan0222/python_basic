@@ -1,29 +1,70 @@
-n,m = map(int,input().split())
-board = []
-result = []
+# N X M 보드 입력받음
+n, m = map(int,input().split(" "))
 
+
+arr = []
 for _ in range(n):
-    board.append(input())
+    arr.append(list(map(str, input())))
 
-for i in range(n-7):
-    for j in range(m-7):
-        draw1 = 0
-        draw2 = 0
 
-        for a in range(i,i+8):
-            for b in range(j,j+8):
-                if(a+b) % 2 == 0:
-                    if board[a][b] != 'B':
-                        draw1 += 1
-                    if board[a][b] != 'W':
-                        draw2 += 1
+# test
+# for _ in range(n):
+#     print("%d"%(_+1) + "행", end=' =')
+#     for i in range(m):
+#         print(arr[_][i], end='')
+
+#     print()
+
+
+# 최소 덧칠 갯수 기록변수
+best_update = -1
+
+# N X M 보드 전체검사
+for N in range(n-7):
+    for M in range(m-7):
+
+        white_first = 0
+        black_first = 0
+        example_update = 0
+        
+        # 임의의 8 X 8 보드 검사
+        for row in range(N, N+8, +1):
+            for col in range(M, M+8, +1):
+                
+                # 흰 & 검 시작 2가지 상태, 검사
+                if((row + 1) % 2 != 0):
+                    if((col + 1) % 2 != 0):
+                        if(arr[row][col] != "W"):
+                            white_first += 1
+                        else:
+                            black_first += 1
+                    else:
+                        if(arr[row][col] != "B"):
+                            white_first += 1
+                        else:
+                            black_first += 1
                 else:
-                    if board[a][b] != 'W':
-                        draw1 += 1
-                    if board[a][b] != 'W':
-                        draw2 += 1
+                    if((col + 1) % 2 != 0):
+                        if(arr[row][col] != "B"):
+                            white_first += 1
+                        else:
+                            black_first += 1
+                    else:
+                        if(arr[row][col] != "W"):
+                            white_first += 1
+                        else:
+                            black_first += 1
 
-        result.append(draw1)
-        result.append(draw2)
+        # 임의의 보드 검사 완료
+        if (white_first > black_first):
+            example_update = black_first
+        else:
+            example_update = white_first
+                
+        # 임의의 보드 최소갯수와 기록된 최소 갯수 비교
+        if (best_update == -1 or best_update > example_update):
+            best_update = example_update
+        
+        # print(best_update, end =", ")
 
-print(min(result))
+print(best_update)
