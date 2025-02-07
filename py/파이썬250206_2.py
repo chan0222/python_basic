@@ -38,3 +38,24 @@ while treeHit < 10:
 #while 문 강제로 빠져나가기 
 # coffee.py
 coffee = 10 
+while True:
+    money = int(input("돈을 넣어주세요:")) #사용자로부터 값을 입력받는 부분이고 입력받은 숫자를 money 변수에 대입하는 것
+    if money == 300 :
+        print("커피를 줍니다.")
+        coffee = coffee -1
+    elif money > 300:
+        print("거스름돈 %d를 주고 커피를 줍니다." % (money - 300))
+        coffee = coffee -1
+    else:
+        print("돈을 다시 돌려주고 커필ㄹ 주지 않습니다.")
+        print("남은 커피의 양은 %d개 입니다." % coffee)
+    if coffee == 0:
+        print("커피가 다 떨어졌습니다. 판매를 중지 합니다.")
+        break
+
+# while 문의 맨처음 으로 돌아가기
+# continue문 while 문을 빠져나가지 않고 while 문의 맨처음(조건문)으로 다시 돌아가게 만들고 싶은 경우
+## 1부터 10/가지의 숫자 중에서 홀수만 출력하는 것을 while문을 사용해서 작성한다고 하면?
+a = 0 
+while a < 10:
+    print()
